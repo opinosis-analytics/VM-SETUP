@@ -4,6 +4,13 @@
 
     ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 
+ssh -i ~/.ssh/kavita_gpu2.pem opinosis@20.55.233.67
+ssh -L 8888:localhost:8888 -i ~/.ssh/kavita_gpu2.pem opinosis@20.55.233.67
+ 
+open ~/.ssh
+
+chmod 600 ~/.ssh/kavita_gpu2.pem
+
 ## Install nano
 
     sudo apt update && sudo apt install -y nano
@@ -62,22 +69,19 @@ Now that the enviroment is set up, you can use the multillm library in the use_p
 
 1. Enter the directory:
 
-        cd  use_package_multi_llm
-
+   cd  use_package_multi_llm
 2. Install packages
 
-        pipenv install -v
-
+   pipenv install -v
 3. Enter the shell
 
-        pipenv shell
+   pipenv shell
 
 ### Run the script
 
-        python index.py
+    python index.py
 
 ### To Run Jupyter notebook:
-
 
     jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
 
