@@ -8,15 +8,25 @@ echo "Start creating the enviroment in the VM for MultiLLM library"
 # -------------------------
 export DEBIAN_FRONTEND=noninteractive
 
-# -------------------------
-# Sync tzdata with system timezone (avoid prompts)
-# -------------------------
-sudo dpkg-reconfigure -f noninteractive tzdata
 
 # -------------------------
 # Update apt packages
 # -------------------------
 sudo apt update -y
+
+# -------------------------
+# Install tzdata (non-interactive)
+# -------------------------
+sudo DEBIAN_FRONTEND=noninteractive apt install -y tzdata
+
+# Set timezone to UTC to avoid prompts
+sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
+sudo dpkg-reconfigure -f noninteractive tzdata
+
+# -------------------------
+# Sync tzdata with system timezone (avoid prompts)
+# -------------------------
+sudo dpkg-reconfigure -f noninteractive tzdata
 
 # -------------------------
 # Install basic dependencies
