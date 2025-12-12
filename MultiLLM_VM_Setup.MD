@@ -6,10 +6,11 @@ ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 ## Create the shell script file
 
 1. Create the shell script file:
+
     nano vm_setup_for_multillm.sh
 
-2. Copy the content from this script [vm_setup_for_multillm.sh](./vm_setup_for_multillm.sh)
-3. Paste your script into the file.
+2. Copy the content from this script: [vm_setup_for_multillm.sh](./vm_setup_for_multillm.sh)
+3. Paste it into the file.
 
 4. Save and exit:
 
