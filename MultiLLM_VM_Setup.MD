@@ -2,7 +2,7 @@
 
 ## Login to VM
 
-ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
+    ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 
 ## Install nano
 
@@ -13,12 +13,13 @@ ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 1. Create a new shell file vm_setup_for_multillm.sh:
 
         nano vm_setup_for_multillm.sh
+
 2. Copy the content from this script:
 
    [vm_setup_for_multillm.sh
    ](./vm_setup_for_multillm.sh)
-4. Paste it into the file.
-5. Save and exit:
+3. Paste it into the file.
+4. Save and exit:
 
    Press CTRL+O → Enter → CTRL+X
 
@@ -39,19 +40,20 @@ Please Note: Before running the code below generate a ssh key from the VM and pu
 
 For example:
 
-* **ssh-keygen -t ed25519 -C "**1421015@iub.edu.bd**"**
+* ssh-keygen -t ed25519 -C "1421015@iub.edu.bd"
+* ssh-keygen -t ed25519 -C "[1421015@iub.edu.bd](mailto:1421015@iub.edu.bd "mailto:1421015@iub.edu.bd")" && echo "Paste the key to your github account: [https://github.com/settings/ssh/new](https://github.com/settings/ssh/new "https://github.com/settings/ssh/new")" && cat ~/.ssh/id_ed25519.pub
 
 The command below creates a directory called **projects** and clones the following library inside it : Opinosis-MultiLLM and use_package_multi_llm
 
-        mkdir projects && cd projects &&
+    mkdir projects && cd projects &&
 
-        git clone git@github.com:opinosis-analytics/Opinosis-MultiLLM.git &&
+    git clone git@github.com:opinosis-analytics/Opinosis-MultiLLM.git &&
 
-        git clone git@github.com:opinosis-analytics/use_package_multi_llm.git
+    git clone git@github.com:opinosis-analytics/use_package_multi_llm.git
 
 ## Run the project use_package_multillm
-Now that the enviroment is set up, you can use the multillm library in the use_package_multi_llm repo.
 
+Now that the enviroment is set up, you can use the multillm library in the use_package_multi_llm repo.
 
 ### To Run the script:
 
