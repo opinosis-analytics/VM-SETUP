@@ -2,6 +2,8 @@
 
 ## Login to VM 
 ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226 
+## Install nano
+    sudo apt update && sudo apt install -y nano
 
 ## Create the shell script file
 
