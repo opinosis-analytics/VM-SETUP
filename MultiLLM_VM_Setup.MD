@@ -12,8 +12,7 @@
 
 1. Create a new shell file vm_setup_for_multillm.sh:
 
-        nano vm_setup_for_multillm.sh
-
+   nano vm_setup_for_multillm.sh
 2. Copy the content from this script:
 
    [vm_setup_for_multillm.sh
@@ -32,8 +31,8 @@
     sudo ./vm_setup_for_multillm.sh
 
 ## Refresh the bash
-    source ~/.bashrc
 
+    source ~/.bashrc
 
 ## Clone the repos
 
@@ -59,16 +58,27 @@ The command below creates a directory called **projects** and clones the followi
 
 Now that the enviroment is set up, you can use the multillm library in the use_package_multi_llm repo.
 
-### To Run the script:
+### To Run the Programs Create Pipenv shell:
 
-cd  use_package_multi_llm
+1. Enter the directory:
 
- python index.py
+        cd  use_package_multi_llm
+
+2. Install packages
+
+        pipenv install -v
+
+3. Enter the shell
+
+        pipenv shell
+
+### Run the script
+
+        python index.py
 
 ### To Run Jupyter notebook:
 
-cd  use_package_multi_llm
 
-jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+    jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
 
 Open the url [http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb](http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb)
