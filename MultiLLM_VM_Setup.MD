@@ -10,12 +10,15 @@ ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 
 ## Create and run the shell script file
 
-1. Create the shell script file:
+1. Create a new shell file vm_setup_for_multillm.sh:
 
-   nano vm_setup_for_multillm.sh
-2. Copy the content from this script: [vm_setup_for_multillm.sh](./vm_setup_for_multillm.sh)
-3. Paste it into the file.
-4. Save and exit:
+        nano vm_setup_for_multillm.sh
+2. Copy the content from this script:
+
+   [vm_setup_for_multillm.sh
+   ](./vm_setup_for_multillm.sh)
+4. Paste it into the file.
+5. Save and exit:
 
    Press CTRL+O → Enter → CTRL+X
 
@@ -25,12 +28,12 @@ ssh -i ~/.ssh/kavita_gpu.pem kavita@172.210.243.226
 
 ## Run the Script
 
-sudo ./vm_setup_for_multillm.sh
+    sudo ./vm_setup_for_multillm.sh
 
 ## Clone the repos
 
-Now that you have setup VM for usage, now clone the projects and put them in the same directory ***projects.
-Please Note: Before running the code below generate a ssh key from the VM and put it in yor git hub:** *
+Now that you have  the necessary setup for using multillm library on  VM , you can now  clone the projects and put them in the same directory ***projects.
+Please Note: Before running the code below generate a ssh key from the VM and put it in yor git hub:**
 
 **ssh-keygen -t ed25519 -C your_email@example.com**.** **
 
@@ -38,15 +41,17 @@ For example:
 
 * **ssh-keygen -t ed25519 -C "**1421015@iub.edu.bd**"**
 
-mkdir projects && cd projects &&
+The command below creates a directory called **projects** and clones the following library inside it : Opinosis-MultiLLM and use_package_multi_llm
 
-   git clone git@github.com:opinosis-analytics/Opinosis-MultiLLM.git &&
+        mkdir projects && cd projects &&
 
-    git clone git@github.com:opinosis-analytics/use_package_multi_llm.git
+        git clone git@github.com:opinosis-analytics/Opinosis-MultiLLM.git &&
+
+        git clone git@github.com:opinosis-analytics/use_package_multi_llm.git
 
 ## Run the project use_package_multillm
+Now that the enviroment is set up, you can use the multillm library in the use_package_multi_llm repo.
 
-Read the instructions on its [Readme](https://github.com/opinosis-analytics/use_package_multi_llm/blob/main/README.MD#11-install-oa-multillm-with-pipenv) on how to run the script and notebook
 
 ### To Run the script:
 
