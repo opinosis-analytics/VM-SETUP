@@ -2,7 +2,7 @@
 
 set -e  # exit on error
 echo "Start creating the enviroment in the VM for MultiLLM library"
-
+sudo rm -rf /root/.pyenv
 # -------------------------
 # Make apt fully non-interactive (fix tzdata prompt)
 # -------------------------
@@ -23,10 +23,6 @@ sudo DEBIAN_FRONTEND=noninteractive apt install -y tzdata
 sudo ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime
 sudo dpkg-reconfigure -f noninteractive tzdata
 
-# -------------------------
-# Sync tzdata with system timezone (avoid prompts)
-# -------------------------
-sudo dpkg-reconfigure -f noninteractive tzdata
 
 # -------------------------
 # Install basic dependencies
@@ -54,20 +50,25 @@ echo "Successfully installed ffmpeg."
 # -------------------------
 curl https://pyenv.run | bash
 
+#########################################################################################################
 # -------------------------
-# Make pyenv persistent in shell
+# Configure pyenv and pipenv in current session
 # -------------------------
-PYENV_ROOT="$HOME/.pyenv"
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
-echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
-echo 'eval "$(pyenv init -)"' >> ~/.bashrc
-echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-
-# Also apply it to current script session
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="$PYENV_ROOT/bin:$PATH:$HOME/.local/bin"
+eval "$(pyenv init - bash)"
 eval "$(pyenv virtualenv-init -)"
+
+# Also add to shell config files for persistence
+if ! grep -q 'PYENV_ROOT' ~/.bashrc; then
+    echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.bashrc
+    echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(pyenv init - bash)"' >> ~/.bashrc
+    echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+fi
+#########################################################################################################
+
 
 # -------------------------
 # Install Python 3.11 using pyenv
@@ -78,12 +79,13 @@ pyenv global 3.11.13   # Set Python 3.11 globally
 # -------------------------
 # Install pipenv
 # -------------------------
-pip install --upgrade pip
-pip install pipenv
+sudo apt install -y pipx
+pipx install pipenv
 
-# -------------------------
-# Install Ollama
-# -------------------------
+
+# # -------------------------
+# # Install Ollama
+# # -------------------------
 curl -fsSL https://ollama.com/install.sh | sh
 
 # -------------------------
@@ -106,5 +108,21 @@ sleep 5  # small delay to ensure server is fully ready
 
 echo "Downloading Qwen model from Ollama."
 ollama pull qwen3:0.6b
+
+# # -------------------------
+# # Make pyenv and pipenv immediately available
+# # -------------------------
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH:$HOME/.local/bin"
+eval "$(pyenv init - bash)"
+eval "$(pyenv virtualenv-init -)"
+pipx ensurepath  # optional, ensures pipenv is found in future shells
+
+
+## Verify they work (optional)
+echo "Pyenv version: $(pyenv --version)"
+echo "Pipenv version: $(pipenv --version)"
 
 echo "Setup completed successfully !!"
