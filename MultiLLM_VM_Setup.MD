@@ -1,5 +1,6 @@
 # VM Setup for MultiLLM
 
+## Get the Private SSH Key from Azure
 Grab and put the private key in the ssh folder and provide permissions to read the SSH key:
 
     open ~/.ssh
@@ -29,12 +30,13 @@ After putting the key in the  ssh folder. Run:
 
 1. Create a new shell file vm_setup_for_multillm.sh:
 
-   nano vm_setup_for_multillm.sh
-2. Copy the content from this script:
+        nano vm_setup_for_multillm.sh
 
-   [vm_setup_for_multillm.sh
+2. Copy the content from this script: [vm_setup_for_multillm.sh
    ](./vm_setup_for_multillm.sh)
-3. Paste it into the file.
+
+3. Paste it into the file you opened with nano.
+
 4. Save and exit:
 
    Press CTRL+O → Enter → CTRL+X
@@ -106,4 +108,6 @@ Now that the enviroment is set up, you can use the multillm library in the use_p
 
     jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
 
-Open the url [http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb](http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb)
+Open the url:
+
+[http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb](http://localhost:8888/notebooks/notebook/test_oa_multi_llm_package.ipynb)
