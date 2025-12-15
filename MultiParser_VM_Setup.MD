@@ -40,8 +40,18 @@ Please Note: If you have not already created a ssh key on your VM and set it up 
 **ssh-keygen -t ed25519 -C your_email@example.com**.
 
 For example:
+    
+    ssh-keygen -t ed25519 -C "[1421015@iub.edu.bd](mailto:1421015@iub.edu.bd "mailto:1421015@iub.edu.bd")" && 
+    
+    printf "SSH KEY:\n\n" && 
+    
+    cat ~/.ssh/id_ed25519.pub && 
 
-    ssh-keygen -t ed25519 -C "[1421015@iub.edu.bd](1421015@iub.edu.bd)"
+    printf "\n\n"
+
+    printf "Paste the key to your github account: https://github.com/settings/ssh/new"
+
+    printf "\n\n"
 
 Now go to the projects directory where you already have the repos Opinosis-MultiLLM and use_package_multi_llm and clone multiparser repo
 
