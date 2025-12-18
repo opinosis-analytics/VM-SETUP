@@ -18,7 +18,7 @@ Change mode
 
     chmod 600 ~/.ssh/vm_key
 
-## 2. Copy Key to VM
+## 2. Copy Public Key to VM
 
 Copy the public key to server.
 
